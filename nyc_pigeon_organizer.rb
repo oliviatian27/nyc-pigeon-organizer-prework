@@ -1,11 +1,17 @@
 def nyc_pigeon_organizer(data)
-  result=Hash.new(0)
+  result=Hash.new
    data.each do |feature,detail|
      detail.each do |key,value|
        value.each do |x|
-         if result[x][feature]
-            result[x][feature] << key.to_s
+         if result.has_key?(x)
+            if result[x].has_key?(feature)
+               result[x][feature] << key.to_s
+            else
+               result[x][feature]=[]
+               result[x][feature] << key.to_s
+            end
          else
+            result[x]={}
             result[x][feature]=[]
             result[x][feature] << key.to_s
          end
