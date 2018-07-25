@@ -3,8 +3,14 @@ def nyc_pigeon_organizer(data)
    data.each do |feature,detail|
      detail.each do |key,value|
        value.each do |x|
-         
-         result[x][feature]=[]
-         result[x][feature] << key
+         if result[x][feature]
+            result[x][feature] << key
+         else
+            result[x][feature]=[]
+            result[x][feature] << key
+         end
+        end
+      end
+     end 
          
 end
